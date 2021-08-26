@@ -8,40 +8,46 @@
 
 // Блок 3 и 4 для отправки сообщений и включения в очередь для показа.
 
-const tasks = ['Задача 1', 'Задача 2', 'Задача 3'];
+const tasks = ['Первоя', 'Вторая', 'Третья'];
 const messing = document.querySelector('.messing');
 const span = messing.querySelector('span');
 const input = document.querySelector('input');
 const button = document.querySelector('.button');
-const allMessing = document.querySelector('.all_messing')
+const allMessing = document.querySelector('.all_messing');
+const tagDelet = document.querySelector('b');
 
 
-const getTask = () => {
-    tasks.forEach((el, i) => {
+const getTask = (newTask) => {
+    newTask.forEach((el, i) => {
         setTimeout(() => {
         span.textContent = el;
-    //   console.log(el);
     }, (i + 1) * 2000);
   });
 };
 
 const boxTasks = (arr) => {
+    allMessing.innerHTML = '';
     arr.forEach(el => {
-        allMessing.innerHTML += ` <span>${el}</span>`;
+        allMessing.innerHTML += `<span>${el}</span>`;
     });
 };
 
 const addNewTask = () => {
-    tasks.push(input.value)
+    tasks.push(input.value);
+    input.value = '';
     boxTasks(tasks);
-    setInterval(getTask, (tasks.length * 2000))
-    console.log(tasks)
+    getTask(tasks);
+    console.log(tasks);
 };
-console.log(tasks)
-// getTask()
 
+const taskDelete = () => {
+
+};
+// console.log(tasks)
+getTask(tasks);
+boxTasks(tasks);
 // 
 
-button.addEventListener('click',addNewTask)
+button.addEventListener('click',addNewTask);
 
 
