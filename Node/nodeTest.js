@@ -51,7 +51,7 @@
 
 // Read and write file
 
-const fs = require('fs');
+// const fs = require('fs');
 
 //  const text = fs.readFileSync('text.txt','utf-8');
 //  console.log(text)
@@ -80,11 +80,67 @@ const fs = require('fs');
 //     fs.writeFile('./new_dir/new_text.txt','Новый фйл в новой папке',() => {});
 // });
 
-fs.unlink('./new_dir/new_text.txt', () => {
-    fs.rmdir('new_dir', () => {
-        console.log('Всё успешно удалено');
-    });
+// fs.unlink('./new_dir/new_text.txt', () => {
+//     fs.rmdir('new_dir', () => {
+//         console.log('Всё успешно удалено');
+//     });
+// });
+
+// ==============================
+// Local server
+
+// const http = require('http');
+
+// const server = http.createServer((req, res) => {
+//     console.log('URL страницы' + req.url);
+//     res.writeHead(200, {'Content-Type':'text/plain; charset=utf-8'});
+//     res.end('Локальный сервер');
+// });
+
+// server.listen(5500, '127.0.0.1');
+// console.log('Мы отслеживаем порт 3000');
+
+// ============================================
+
+// Потоки
+
+// const fs = require('fs');
+
+// const readText = fs.createReadStream(__dirname + '/text.txt');
+// const writeText = fs.createWriteStream(__dirname + '/newText.txt');
+// readText.on('data', (chunk) => {
+//     console.log('Подгрузка данных:');
+//     writeText.write(chunk)
+// });
+
+// ===============================================
+// Функция pipe() и поточная загрузка даенных на стораницу
+
+const fs = require('fs');
+
+
+
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+    console.log('URL страницы' + req.url);
+    // res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+    
+    // const readText = fs.createReadStream(__dirname + '/index.html', 'utf-8');
+    // readText.pipe(res);
+
+    res.writeHead(200, {'Content-Type':'application/json; charset=utf-8'});
+    const obj = {
+        model: 'BMW',
+        speed: '240 km',
+        color: 'red'
+    };
+    res.end(JSON.stringify(obj));
 });
+
+server.listen(5500, '127.0.0.1');
+console.log('Мы отслеживаем порт 3000');
+
 
 
 
