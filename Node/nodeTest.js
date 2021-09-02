@@ -116,31 +116,77 @@
 // ===============================================
 // Функция pipe() и поточная загрузка даенных на стораницу
 
-const fs = require('fs');
+// const fs = require('fs');
 
 
 
-const http = require('http');
+// const http = require('http');
 
-const server = http.createServer((req, res) => {
-    console.log('URL страницы' + req.url);
+// const server = http.createServer((req, res) => {
+//     console.log('URL страницы' + req.url);
     // res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
     
     // const readText = fs.createReadStream(__dirname + '/index.html', 'utf-8');
     // readText.pipe(res);
 
-    res.writeHead(200, {'Content-Type':'application/json; charset=utf-8'});
-    const obj = {
-        model: 'BMW',
-        speed: '240 km',
-        color: 'red'
-    };
-    res.end(JSON.stringify(obj));
+    // res.writeHead(200, {'Content-Type':'application/json; charset=utf-8'});
+//     const obj = {
+//         model: 'BMW',
+//         speed: '240 km',
+//         color: 'red'
+//     };
+//     res.end(JSON.stringify(obj));
+// });
+
+// server.listen(5500, '127.0.0.1');
+// console.log('Мы отслеживаем порт 3000');
+// ==================================================
+
+// Переход с одной страницы на другую
+
+// const fs = require('fs');
+// const http = require('http');
+
+// const server = http.createServer((req, res) => {
+// console.log('URL: ' + req.url);
+//     if (req.url === '/index' || req.url === '/') {
+//         res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+//         fs.createReadStream(__dirname + '/index.html').pipe(res);
+//     } else if (req.url === '/page2') {
+//         res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+//         fs.createReadStream(__dirname + '/page2.html').pipe(res);
+//     } else if (req.url === '/page3') {
+//         res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+//         fs.createReadStream(__dirname + '/page3.html').pipe(res);
+//     } else {
+//         res.writeHead(404, {'Content-Type':'text/html; charset=utf-8'});
+//         fs.createReadStream(__dirname + '/404.html').pipe(res);
+//     }
+    
+// });
+
+// server.listen(5500, '127.0.0.1');
+// console.log('Мы отслеживаем порт 3000');
+// ==================================================
+
+// Library EXPRESS
+
+const express = require('express');
+
+const app = express();
+app.get('/', (req, res) => {
+    console.log('URL: ' + req.url);
+    res.send('This is page 1');
+});
+app.get('/news', (req, res) => {
+    console.log('URL: ' + req.url);
+    res.send('This is news');
+});
+app.get('/news/:id', (req, res) => {
+    console.log('URL: ' + req.url);
+    res.send('ID is - ' + req.params.id);
 });
 
-server.listen(5500, '127.0.0.1');
-console.log('Мы отслеживаем порт 3000');
-
-
+app.listen(5500);
 
 
