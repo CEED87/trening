@@ -171,22 +171,85 @@
 
 // Library EXPRESS
 
-const express = require('express');
+// const express = require('express');
 
+// const app = express();
+// app.get('/', (req, res) => {
+//     console.log('URL: ' + req.url);
+//     res.send('This is page 1');
+// });
+// app.get('/news', (req, res) => {
+//     console.log('URL: ' + req.url);
+//     res.send('This is news');
+// });
+// app.get('/news/:id', (req, res) => {
+//     console.log('URL: ' + req.url);
+//     res.send('ID is - ' + req.params.id);
+// });
+
+// =======
+// const app = express();
+
+// app.set('view engine', 'ejs');
+// app.use('/public', express.static('public'));
+
+// app.get('/', (req, res) => {
+//     console.log('URL: ' + req.url);
+//     res.render('home');
+// });
+// app.get('/page2', (req, res) => {
+//     console.log('URL: ' + req.url);
+//     res.render('twoPage');
+// });
+// app.get('/news/:id', (req, res) => {
+//     console.log('URL: ' + req.url);
+//     const obj = {
+//         title: 'Новости',
+//         id: 35,
+//         arr: ['Названия статей','Страницы','Числа 1 2 3 4',48894]
+//     };
+//     res.render('news', {newsId: req.params.id, obj: obj});
+// });
+
+// app.listen(5500);
+
+// =====================================================
+
+// Forma
+
+const express = require('express');
+var bodyParser = require('body-parser');
 const app = express();
+
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+
+app.set('view engine', 'ejs');
+app.use('/public', express.static('public'));
+
 app.get('/', (req, res) => {
-    console.log('URL: ' + req.url);
-    res.send('This is page 1');
+    // console.log('URL: ' + req.url);
+    res.render('home');
 });
-app.get('/news', (req, res) => {
-    console.log('URL: ' + req.url);
-    res.send('This is news');
+app.get('/page2', (req, res) => {
+    // console.log('URL: ' + req.url);
+    res.render('twoPage');
+});
+
+app.post('/page2',urlencodedParser, (req, res) => {
+    // if (!req.body) {return res.sendStatus(400);}
+    console.log(req.body);
+    res.render('ansForm', {data: req.body});
 });
 app.get('/news/:id', (req, res) => {
-    console.log('URL: ' + req.url);
-    res.send('ID is - ' + req.params.id);
+    // console.log('URL: ' + req.url);
+    const obj = {
+        title: 'Новости',
+        id: 35,
+        arr: ['Названия статей','Страницы','Числа 1 2 3 4',48894]
+    };
+    res.render('news', {newsId: req.params.id, obj: obj});
 });
 
-app.listen(5500);
 
+app.listen(5500);
 

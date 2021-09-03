@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="/public/css/style.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <title>Content</title>
+    <style>
+        body {
+    background-color: rgb(186, 226, 226);
+    text-align: center;
+    margin: 100px 100px;
+}
+h1 {
+    font-size: 20px;
+    color: rgb(27, 27, 42);
+}
+p {
+    color: rgb(88, 97, 3);
+}
+b {
+    color: black;
+}
+ul {
+    text-align: left;
+}
+    </style>
+</head>
+</head>
+
+<body>
+
+    <%- include('blocks/navigation.ejs')  -%>
+
+    <h1>Three page</h1>
+    <p>
+        Although there are two American news services operating worldwide — the Associated Press (AP) and United Press
+        International (UPI) — the tremendous size of the nation, the variety of time zones, and the general
+        preoccupation with mainly local issues make it difficult for national daily newspapers to exist. "The New York
+        Times", with a circulation of 900,000, is perhaps the most influential daily newspaper, followed by "The
+        Washington Post" and "The Los Angeles Times", "The Christian Science Monitor" has become known for its in-depth
+        analysis of major news developments. An attempt has been made to introduce the "popular" "US Today" on a
+        nationwide basis; and "The Wall Street Journal", broadened from a strictly financial paper to one with general
+        news interest, comes close to being a national newspaper.
+        
+    </p>
+<p>Спасибо!</p>
+<p><b>Email:</b> <%= data.email %> </p>
+<p><b>Password:</b> <%= data.pass %> </p>
+<p><b>Check:</b> <%= data.check %> </p>
+    
+
+</html>
