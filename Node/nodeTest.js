@@ -31,11 +31,11 @@
 
 // util.inherits(Car, events.EventEmitter);
 
-// const audy = new Car('audy');
+// const audy = new Car('audi');
 // const BMW = new Car('BMW');
 // const reno = new Car('reno');
 
-// const arrCar = [audy,BMW,reno];
+// const arrCar = [audi,BMW,reno];
 
 // arrCar.forEach(car => {
 //     car.on('speed', (text) => {
@@ -43,7 +43,7 @@
 //     });
 // });
 
-// audy.emit('speed',240);
+// audi.emit('speed',240);
 // BMW.emit('speed',342);
 // reno.emit('speed',123);
 
@@ -98,7 +98,7 @@
 // });
 
 // server.listen(5500, '127.0.0.1');
-// console.log('Мы отслеживаем порт 3000');
+// console.log('Мы отслеживаем порт 5500');
 
 // ============================================
 
@@ -114,7 +114,7 @@
 // });
 
 // ===============================================
-// Функция pipe() и поточная загрузка даенных на стораницу
+// Функция pipe() и поточная загрузка данных на стораницу
 
 // const fs = require('fs');
 
